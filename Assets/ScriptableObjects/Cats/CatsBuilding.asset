@@ -15,10 +15,10 @@ MonoBehaviour:
   buildingName: Cats
   baseIncome: 35
   updateInterval: 1
-  amountBought: 21
-  priceToBuy: 1048576
-  buildingSprite: {fileID: 21300000, guid: fc12f2a9f1ca5ee4e9d72576d0595ed9, type: 3}
+  amountBought: 18
+  priceToBuy: 131072
+  buildingSprite: {fileID: 21300000, guid: fe45e812cd6104c48b591aad4290b577, type: 3}
   specificUpgrades:
   - {fileID: 11400000, guid: 23897f9aa6e0d194f99dae789120d1f5, type: 2}
-  lastUpdateTime: 0.12314606
-  currentIncomePerTick: 75348
+  lastUpdateTime: 0.22854432
+  currentIncomePerTick: 23598

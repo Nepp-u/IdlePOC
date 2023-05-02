@@ -170,6 +170,8 @@ MonoBehaviour:
   headerText: {fileID: 2741118044913650291}
   footerText: {fileID: 2741118044439144847}
   tickProgressSlider: {fileID: 9042023536900317396}
+  buyButton: {fileID: 2741118045626766992}
+  CatPrefab: {fileID: 0}
 --- !u!1 &2741118044439144845
 GameObject:
   m_ObjectHideFlags: 0

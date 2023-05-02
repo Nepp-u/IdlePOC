@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class Buildings : MonoBehaviour
     [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private TextMeshProUGUI footerText;
     [SerializeField] private Slider tickProgressSlider;
+    [SerializeField] private Button buyButton;
+    [SerializeField] private GameObject CatPrefab;
 
     private GameManager gameManager;
 
@@ -23,6 +26,7 @@ public class Buildings : MonoBehaviour
     private void Start()
     {
         UpdateText();
+        buyButton.image.sprite = buildingData.buildingSprite;
     }
 
     private void Update()
@@ -43,6 +47,7 @@ public class Buildings : MonoBehaviour
             gameManager.currency -= buildingData.GetPrice();
             buildingData.OnUpgradeBought();
             UpdateText();
+            SpawnNewCat();
         }
     }
     
@@ -50,5 +55,10 @@ public class Buildings : MonoBehaviour
     {
         tickProgressSlider.value = buildingData.lastUpdateTime / buildingData.GetUpdateInterval();
     }
-    
+
+    void SpawnNewCat()
+    {
+        GameObject newCat = Instantiate(CatPrefab, new Vector3(-2, 0, 0), quaternion.identity);
+        newCat.transform.SetParent(FindObjectOfType<BuildingManager>().transform);
+    }
 }

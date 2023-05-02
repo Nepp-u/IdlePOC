@@ -14,7 +14,7 @@ public class BuildingsSO : ScriptableObject
     [SerializeField] private float updateInterval = 1f;
     [SerializeField] public int amountBought = 0;
     [SerializeField] private int priceToBuy = 1;
-    [SerializeField] private Sprite buildingSprite;
+    [SerializeField] public Sprite buildingSprite;
 
     [FormerlySerializedAs("effectiveUpgrades")] [SerializeField] public UpgradesSO[] specificUpgrades;
     [Serialize] public IEnumerable<UpgradesSO> appliedUpgrades;
