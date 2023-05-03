@@ -6,8 +6,28 @@ using Random = UnityEngine.Random;
 
 public class CatAI : MonoBehaviour
 {
+
+    [SerializeField] private float moveSpeed;
+    
+    private bool isCollectingIncome;
+    private bool isColliding;
+
+    public bool IsCollectingIncome
+    {
+        get => isCollectingIncome;
+        set => isCollectingIncome = value;
+    }
+
+    public bool IsColliding
+    {
+        get => isColliding;
+        set => isColliding = value;
+    }
+
+    
     enum State
     {
+        // TODO: add more states so its not just walking around randomly (and hugging walls)
         Roaming
     }
 
@@ -50,7 +70,7 @@ public class CatAI : MonoBehaviour
 
     Vector2 GetRoamingDirection()
     {
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * (moveSpeed * Time.fixedDeltaTime);
     }
     
     IEnumerator RoamingRoutine()
@@ -64,5 +84,30 @@ public class CatAI : MonoBehaviour
         }
     }
     
+    
+    
+    /*
+     * Collect income in a set interval when inside the radius of a building
+     * Can collect income on multiple buildings at the same time
+     */
+    public void StartCollectingIncome(float incomeInterval)
+    {
+        StartCoroutine(PassiveClickRoutine(incomeInterval));
+    }
+
+    public void StopCollectingIncome(float incomeInterval)
+    {
+        StopCoroutine(PassiveClickRoutine(incomeInterval));
+    }
+    
+    public IEnumerator PassiveClickRoutine(float incomeInterval)
+    {
+        while (isCollectingIncome)
+        {
+            Debug.Log(incomeInterval);
+            yield return new WaitForSeconds(incomeInterval);
+
+        }
+    }
     
 }

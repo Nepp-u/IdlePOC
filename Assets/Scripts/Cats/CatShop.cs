@@ -7,14 +7,13 @@ public class CatShop : MonoBehaviour
 {
 
     [SerializeField] private GameObject uiPrefab;
-    
+
     private void Start()
     {
-        foreach (var catData in CatManager.Instance.buildings)
+        foreach (var catData in CatManager.Instance.cats)
         {
             GameObject uiElement = Instantiate(uiPrefab);
             uiElement.transform.SetParent(this.transform);
-            Debug.Log("Instantiated");
             uiElement.GetComponent<Cat>().BuildingData = catData;
         }
     }

@@ -6,35 +6,27 @@ using UnityEngine;
 
 public class CatManager : Singleton<CatManager>
 {
-    //private GameManager gameManager;
-    [SerializeField] public CatSO[] buildings;
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
+    [SerializeField] public CatSO[] cats;
     private void Start()
     {
-        foreach (var building in buildings)
+        foreach (var cat in cats)
         {
-            building.appliedUpgrades = building.specificUpgrades.Union(UpgradeManager.Instance.globalUpgrades);
+            cat.appliedUpgrades = cat.specificUpgrades.Union(UpgradeManager.Instance.globalUpgrades);
         }
     }
 
-    public void UpdateBuildings()
+    public void UpdateCats()
     {
-        for (int i = 0; i < buildings.Length; i++)
+        for (int i = 0; i < cats.Length; i++)
         {
             // Only do this if the player bought at least one
-            if (buildings[i].amountBought > 0)
+            if (cats[i].amountBought > 0)
             {
-                buildings[i].lastUpdateTime += Time.deltaTime;
-                if (buildings[i].lastUpdateTime >= buildings[i].GetUpdateInterval())
+                cats[i].lastUpdateTime += Time.deltaTime;
+                if (cats[i].lastUpdateTime >= cats[i].GetUpdateInterval())
                 {
-                    buildings[i].lastUpdateTime = 0;
-                    GameManager.Instance.currency += buildings[i].CalculateIncome();
+                    cats[i].lastUpdateTime = 0;
+                    GameManager.Instance.currency += cats[i].CalculateIncome();
                 }
             }
         }

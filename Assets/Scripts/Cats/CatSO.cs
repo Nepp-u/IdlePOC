@@ -9,14 +9,14 @@ using UnityEngine.Serialization;
 public class CatSO : ScriptableObject
 {
 
-    [SerializeField] private string buildingName = "Enter Building Name Here";
+    [SerializeField] private string catName = "Enter Cat Name Here";
     [SerializeField] private int baseIncome = 1;
     [SerializeField] private float updateInterval = 1f;
     [SerializeField] public int amountBought = 0;
     [SerializeField] private int priceToBuy = 1;
-    [SerializeField] public Sprite buildingSprite;
+    [SerializeField] public Sprite catSprite;
 
-    [FormerlySerializedAs("effectiveUpgrades")] [SerializeField] public UpgradesSO[] specificUpgrades;
+    [SerializeField] public UpgradesSO[] specificUpgrades;
     [Serialize] public IEnumerable<UpgradesSO> appliedUpgrades;
     [SerializeField] public float lastUpdateTime = 0f;
     [SerializeField] private float currentIncomePerTick;
@@ -24,9 +24,6 @@ public class CatSO : ScriptableObject
     
     private float additiveTotal;
     private float multiplicativeTotal;
-    
-    
-    // TODO: add Sprite for building
     
     public float CalculateIncome()
     {
@@ -49,9 +46,9 @@ public class CatSO : ScriptableObject
         }
     }
 
-    public string GetBuildingName()
+    public string GetCatName()
     {
-        return buildingName;
+        return catName;
     }
 
     public float GetUpdateInterval()

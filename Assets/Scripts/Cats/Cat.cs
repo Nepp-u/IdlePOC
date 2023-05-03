@@ -5,11 +5,12 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Cat : MonoBehaviour
 {
-    [SerializeField] private CatSO buildingData;
+    [SerializeField] private CatSO catData;
     [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private TextMeshProUGUI footerText;
     [SerializeField] private Slider tickProgressSlider;
@@ -17,23 +18,22 @@ public class Cat : MonoBehaviour
     [SerializeField] private GameObject catPrefab;
 
     
-
     public CatSO BuildingData
     {
-        get => buildingData;
-        set => buildingData = value;
+        get => catData;
+        set => catData = value;
     }
 
     private void Start()
     {
-        buildingData.Reset();
+        catData.Reset();
         UpdateText();
         UpdateUIImage();
     }
 
     private void UpdateUIImage()
     {
-        buyButton.image.sprite = buildingData.buildingSprite;
+        buyButton.image.sprite = catData.catSprite;
     }
 
     private void Update()
@@ -43,16 +43,16 @@ public class Cat : MonoBehaviour
 
     private void UpdateText()
     {
-        headerText.text = "Buy " + buildingData.GetBuildingName();
-        footerText.text = "Cost: " + buildingData.GetPrice();
+        headerText.text = "Buy " + catData.GetCatName();
+        footerText.text = "Cost: " + catData.GetPrice();
     }
 
     public void OnBuildingBought()
     {
-        if (buildingData.GetPrice() < GameManager.Instance.currency)
+        if (catData.GetPrice() < GameManager.Instance.currency)
         {
-            GameManager.Instance.currency -= buildingData.GetPrice();
-            buildingData.OnUpgradeBought();
+            GameManager.Instance.currency -= catData.GetPrice();
+            catData.OnUpgradeBought();
             UpdateText();
             SpawnNewCat();
         }
@@ -60,13 +60,13 @@ public class Cat : MonoBehaviour
     
     public void UpdateSliderProgress()
     {
-        tickProgressSlider.value = buildingData.lastUpdateTime / buildingData.GetUpdateInterval();
+        tickProgressSlider.value = catData.lastUpdateTime / catData.GetUpdateInterval();
     }
 
     void SpawnNewCat()
     {
         GameObject newCat = Instantiate(catPrefab, new Vector3(-2, 0, 0), quaternion.identity);
-        newCat.GetComponent<SpriteRenderer>().sprite = buildingData.buildingSprite;
+        newCat.GetComponent<SpriteRenderer>().sprite = catData.catSprite;
         newCat.transform.SetParent(CatManager.Instance.transform);
     }
 }

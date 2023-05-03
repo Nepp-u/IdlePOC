@@ -7,7 +7,7 @@ public class ResetButton : MonoBehaviour
 {
     public void OnResetPressed()
     {
-        foreach (var building in CatManager.Instance.buildings)
+        foreach (var building in CatManager.Instance.cats)
         {
             building.Reset();
         }

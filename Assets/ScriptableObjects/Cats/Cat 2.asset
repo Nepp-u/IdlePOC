@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12467ba19d37981489c9bf8aec26525b, type: 3}
   m_Name: Cat 2
   m_EditorClassIdentifier: 
-  buildingName: Enter Building Name Here
+  buildingName: Cat 2
   baseIncome: 1
   updateInterval: 1
-  amountBought: 0
-  priceToBuy: 1
-  buildingSprite: {fileID: 0}
+  amountBought: 2
+  priceToBuy: 2
+  buildingSprite: {fileID: 21300000, guid: 8fb483ba12fa4cf448e74f21ca131718, type: 3}
   specificUpgrades: []
-  lastUpdateTime: 0
-  currentIncomePerTick: 0
+  lastUpdateTime: 0.528573
+  currentIncomePerTick: 2

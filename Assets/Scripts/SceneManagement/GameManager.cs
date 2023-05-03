@@ -34,7 +34,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         currentCurrencyText.text = "Moneyz: " + currency;
-        CatManager.Instance.UpdateBuildings();
+        CatManager.Instance.UpdateCats();
     }
 
     /*
@@ -47,7 +47,6 @@ public class GameManager : Singleton<GameManager>
 
     public void ManualClick()
     {
-        // Just gonna have at least 1 ClickerUpgrade to start game 
         currency += UpgradeManager.Instance.upgrades[0].CalculateTotalIncrease();
     }
     
