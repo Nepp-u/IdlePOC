@@ -34,7 +34,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         currentCurrencyText.text = "Moneyz: " + currency;
-        BuildingManager.Instance.UpdateBuildings();
+        CatManager.Instance.UpdateBuildings();
     }
 
     /*

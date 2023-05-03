@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2741118044289464643}
   - component: {fileID: 2741118044289464700}
   m_Layer: 5
-  m_Name: Building New
+  m_Name: Cat UI Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   footerText: {fileID: 2741118044439144847}
   tickProgressSlider: {fileID: 9042023536900317396}
   buyButton: {fileID: 2741118045626766992}
-  CatPrefab: {fileID: 0}
+  catPrefab: {fileID: 4893718524028143943, guid: abab371a5441c1d4aa927a94c19cd17e, type: 3}
 --- !u!1 &2741118044439144845
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,8 +513,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

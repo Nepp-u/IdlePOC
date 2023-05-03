@@ -7,25 +7,32 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-public class Buildings : MonoBehaviour
+public class Cat : MonoBehaviour
 {
-    [SerializeField] private BuildingsSO buildingData;
+    [SerializeField] private CatSO buildingData;
     [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private TextMeshProUGUI footerText;
     [SerializeField] private Slider tickProgressSlider;
     [SerializeField] private Button buyButton;
-    [SerializeField] private GameObject CatPrefab;
+    [SerializeField] private GameObject catPrefab;
 
-    private GameManager gameManager;
+    
 
-    private void Awake()
+    public CatSO BuildingData
     {
-        gameManager = FindObjectOfType<GameManager>();
+        get => buildingData;
+        set => buildingData = value;
     }
 
     private void Start()
     {
+        buildingData.Reset();
         UpdateText();
+        UpdateUIImage();
+    }
+
+    private void UpdateUIImage()
+    {
         buyButton.image.sprite = buildingData.buildingSprite;
     }
 
@@ -42,9 +49,9 @@ public class Buildings : MonoBehaviour
 
     public void OnBuildingBought()
     {
-        if (buildingData.GetPrice() < gameManager.currency)
+        if (buildingData.GetPrice() < GameManager.Instance.currency)
         {
-            gameManager.currency -= buildingData.GetPrice();
+            GameManager.Instance.currency -= buildingData.GetPrice();
             buildingData.OnUpgradeBought();
             UpdateText();
             SpawnNewCat();
@@ -58,7 +65,8 @@ public class Buildings : MonoBehaviour
 
     void SpawnNewCat()
     {
-        GameObject newCat = Instantiate(CatPrefab, new Vector3(-2, 0, 0), quaternion.identity);
-        newCat.transform.SetParent(FindObjectOfType<BuildingManager>().transform);
+        GameObject newCat = Instantiate(catPrefab, new Vector3(-2, 0, 0), quaternion.identity);
+        newCat.GetComponent<SpriteRenderer>().sprite = buildingData.buildingSprite;
+        newCat.transform.SetParent(CatManager.Instance.transform);
     }
 }

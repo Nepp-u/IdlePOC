@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BuildingManager : Singleton<BuildingManager>
+public class CatManager : Singleton<CatManager>
 {
     //private GameManager gameManager;
-    [SerializeField] public BuildingsSO[] buildings;
+    [SerializeField] public CatSO[] buildings;
 
 
     protected override void Awake()

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4893718524028143992}
   - component: {fileID: 4893718524028143993}
   m_Layer: 0
-  m_Name: Cat-Alien
+  m_Name: Cat Prefab
   m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe45e812cd6104c48b591aad4290b577, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc12f2a9f1ca5ee4e9d72576d0595ed9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,7 +153,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 6.4, y: 8.4}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

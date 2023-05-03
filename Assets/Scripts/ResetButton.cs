@@ -5,22 +5,14 @@ using UnityEngine;
 
 public class ResetButton : MonoBehaviour
 {
-    private BuildingManager buildingManager;
-    private UpgradeManager upgradeManager;
-    private void Awake()
-    {
-        buildingManager = FindObjectOfType<BuildingManager>();
-        upgradeManager = FindObjectOfType<UpgradeManager>();
-    }
-
     public void OnResetPressed()
     {
-        foreach (var building in buildingManager.buildings)
+        foreach (var building in CatManager.Instance.buildings)
         {
             building.Reset();
         }
 
-        foreach (var upgrade in upgradeManager.upgrades)
+        foreach (var upgrade in UpgradeManager.Instance.upgrades)
         {
             upgrade.Reset();
             

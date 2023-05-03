@@ -5,8 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "Passive Building", fileName = "New Building")]
-public class BuildingsSO : ScriptableObject
+[CreateAssetMenu(menuName = "Cat", fileName = "New Cat")]
+public class CatSO : ScriptableObject
 {
 
     [SerializeField] private string buildingName = "Enter Building Name Here";
@@ -72,7 +72,7 @@ public class BuildingsSO : ScriptableObject
 
     public void Reset()
     {
-    amountBought = 0;
+    amountBought = 1;
     priceToBuy = 1;
     }
 }
