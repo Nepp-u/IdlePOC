@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TextMeshProUGUI currentCurrencyText;
 
 // References to BuildingManager and UpgradeManager
-    public BuildingManager buildingManager;
-    public UpgradeManager upgradeManager;
+    //public BuildingManager buildingManager;
+    //public UpgradeManager upgradeManager;
     
     
     public float currency = 0f;
@@ -19,11 +19,10 @@ public class GameManager : MonoBehaviour
     // List/Array of global upgrades that affect the building
     // List/Array of building specific upgrades
     // Phys representation of building
-    
-    private void Awake()
+
+    protected override void Awake()
     {
-        buildingManager = FindObjectOfType<BuildingManager>();
-        upgradeManager = FindObjectOfType<UpgradeManager>();
+        base.Awake();
     }
 
     void Start()
@@ -35,7 +34,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         currentCurrencyText.text = "Moneyz: " + currency;
-        buildingManager.UpdateBuildings();
+        BuildingManager.Instance.UpdateBuildings();
     }
 
     /*
@@ -49,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void ManualClick()
     {
         // Just gonna have at least 1 ClickerUpgrade to start game 
-        currency += upgradeManager.upgrades[0].CalculateTotalIncrease();
+        currency += UpgradeManager.Instance.upgrades[0].CalculateTotalIncrease();
     }
     
 }

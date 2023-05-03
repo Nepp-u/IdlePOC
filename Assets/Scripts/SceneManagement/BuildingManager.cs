@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : Singleton<BuildingManager>
 {
-    private GameManager gameManager;
+    //private GameManager gameManager;
     [SerializeField] public BuildingsSO[] buildings;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        base.Awake();
     }
 
     private void Start()
     {
         foreach (var building in buildings)
         {
-            building.appliedUpgrades = building.specificUpgrades.Union(gameManager.upgradeManager.globalUpgrades);
+            building.appliedUpgrades = building.specificUpgrades.Union(UpgradeManager.Instance.globalUpgrades);
         }
     }
 
@@ -34,7 +34,7 @@ public class BuildingManager : MonoBehaviour
                 if (buildings[i].lastUpdateTime >= buildings[i].GetUpdateInterval())
                 {
                     buildings[i].lastUpdateTime = 0;
-                    gameManager.currency += buildings[i].CalculateIncome();
+                    GameManager.Instance.currency += buildings[i].CalculateIncome();
                 }
             }
         }
